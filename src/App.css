@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Caudex', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.blue-text {
+  color: #00DEEA;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav {
+  padding: 2% 5%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo {
+  width: 90%;
+}
+
+.body-bg {
+  height: 100vh;
+  background-image: url(/public/Images/bg.png);
+}
+
+.body-bg-screen {
+  height: 100vh;
+  background-color: #0000007d;
+}
+
+.hero-section-content {
+  padding: 3% 0% 0% 5%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.herosvg {
+  width: 600px;
+}
+
+
+h1.hero-text {
+  font-size: 4.5rem;
+}
+
+p.hero-text {
+  font-size: 2rem;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 17%;
+  cursor: pointer;
+  background-color: #01c38c75;
+  padding: 3% 10%;
+  border-radius: 5px;
+
+}
+
+
+
+.login-section-content {
+  background-color: #69696993;
+  margin: auto 10%;
+
+  height: 70vh
+}
+
+img.hero-img {
+  width: 80%;
+}
+
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding: 5%;
 }
 
-.App-link {
-  color: #61dafb;
+.hero-txt {
+  width: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.overall {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
