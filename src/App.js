@@ -8,21 +8,22 @@ import Google from './components/Google';
 import Home from "./pages/Home"
 import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
-
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 
 function App() {
   return (
-    <><GoogleOAuthProvider clientId="593432034776-t6eebgjbnlgd9lpbgmf6dk82om02npvc.apps.googleusercontent.com">
-      <Google />
+    <>
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
-    </GoogleOAuthProvider>;
     </>
   );
 }
