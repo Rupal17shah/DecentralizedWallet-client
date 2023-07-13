@@ -17,12 +17,11 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Link } from 'react-router-dom';
 
-
-
-
-
 const defaultTheme = createTheme({
-
+    palette: {
+        primary: {
+            main: '#000',
+        }},
 });
 
 export default function SignInSide() {
@@ -59,16 +58,17 @@ export default function SignInSide() {
                             backgroundPosition: 'center',
                         }}
                     />
-                    <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
+                    <Grid item xs={12} sm={8} md={6} 
+                    margin={"auto"} square>
                         <Box
                             sx={{
-                                my: 17,
+                                my: 10,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center'
                             }}
                         >
-                            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
                                 <LockOutlinedIcon />
                             </Avatar>
                             <Typography component="h1" variant="h5" color="#000">
@@ -134,7 +134,7 @@ export default function SignInSide() {
                                     <Grid item>
                                         <Link to="/login" variant="body2">
                                             <Typography color={"#000"}>
-                                                Don't have an account? Sign Up!!!
+                                                Don't have an account? Login!!!
                                             </Typography>
                                         </Link>
                                     </Grid>

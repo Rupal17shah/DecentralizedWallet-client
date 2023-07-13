@@ -3,7 +3,6 @@ import React from 'react'
 const Home = () => {
     return (
         <>
-
             <section className='body-bg'>
                 <div className='body-bg-screen'>
                     <div className='hero-section-content'>
