@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axiosInst from '../services/api'
-
+import Navbar from '../components/Navbar'
 
 
 const Home = () => {
@@ -11,6 +11,8 @@ const Home = () => {
     })
     return (
         <>
+            <Navbar />
+
             <section className='body-bg'>
                 <div className='body-bg-screen'>
                     <div className='hero-section-content'>

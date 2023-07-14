@@ -95,3 +95,14 @@ form {
   justify-content: space-between;
   align-items: center;
 }
+
+.dashboard-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 5%;
+  width: 100%;
+  position: absolute;
+}
+
+.dash-nav {}

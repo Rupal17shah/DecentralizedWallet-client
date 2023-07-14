@@ -21,11 +21,7 @@ const defaultTheme = createTheme({
   },
 });
 
-// sessionStorage.setItem("item_key", item_value);
-
-
-
-export default function LogInSide() {
+export default function LogInSide({ setIsAuthenticated }) {
   const [login, setLogin] = React.useState({});
   const navigate = useNavigate();
 
@@ -42,13 +38,14 @@ export default function LogInSide() {
       // console.log(response);
       if (response) {
         sessionStorage.setItem("token", response.data.accessToken);
+        setIsAuthenticated(true);
+
         navigate("/dashboard");
         // console.log(response.data.accessToken);
       }
     } catch (err) {
       console.log(err);
     }
-
   };
   return (
     <div>
@@ -77,8 +74,6 @@ export default function LogInSide() {
             xs={12}
             sm={8}
             md={6}
-            // component={Paper}
-            // elevation={6}
             square
             m={"auto"}
           >
