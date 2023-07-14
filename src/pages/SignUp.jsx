@@ -16,26 +16,33 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Link } from 'react-router-dom';
+import axiosInst from '../services/api';
 
 const defaultTheme = createTheme({
     palette: {
         primary: {
             main: '#000',
-        }},
+        }
+    },
 });
 
 export default function SignInSide() {
-    const [role, setRole] = React.useState('');
+    const [signup, setSignup] = React.useState({});
     const handleChangeDropDown = (event) => {
-        setRole(event.target.value);
+
+        setSignup({ ...signup, role: event.target.value });
     };
-    const handleSubmit = (event) => {
+    const hendleChange = (e) => {
+        const data = new FormData(e.currentTarget);
+        setSignup({ name: data.get('name'), email: data.get('email'), password: data.get('password') });
+
+    };
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+
+        console.log(signup);
+        const response = await axiosInst.post('/signup', signup);
+        console.log(response);
     };
 
     return (
@@ -58,8 +65,8 @@ export default function SignInSide() {
                             backgroundPosition: 'center',
                         }}
                     />
-                    <Grid item xs={12} sm={8} md={6} 
-                    margin={"auto"} square>
+                    <Grid item xs={12} sm={8} md={6}
+                        margin={"auto"} square>
                         <Box
                             sx={{
                                 my: 10,
@@ -74,7 +81,7 @@ export default function SignInSide() {
                             <Typography component="h1" variant="h5" color="#000">
                                 Sign in
                             </Typography>
-                            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                            <Box onChange={hendleChange} component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                                 <TextField
                                     margin="normal"
                                     required
@@ -86,6 +93,7 @@ export default function SignInSide() {
                                     autoFocus
                                 />
                                 <TextField
+                                    // onChange={hendleChange}
                                     margin="normal"
                                     required
                                     fullWidth
@@ -96,6 +104,7 @@ export default function SignInSide() {
 
                                 />
                                 <TextField
+                                    // onChange={hendleChange}
                                     margin="normal"
                                     required
                                     fullWidth
@@ -111,23 +120,27 @@ export default function SignInSide() {
                                         <Select
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
-                                            value={role}
+                                            // value={role}
+                                            name="role"
                                             label="Role"
                                             onChange={handleChangeDropDown}
                                         >
-                                            <MenuItem value={"Miner"}><Typography color={"#000"}>Miner</Typography></MenuItem>
-                                            <MenuItem value={"Node"}><Typography color={"#000"}>Node</Typography></MenuItem>
+                                            <MenuItem value={"miner"}><Typography color={"#000"}>Miner</Typography></MenuItem>
+                                            <MenuItem value={"node"}><Typography color={"#000"}>Node</Typography></MenuItem>
                                         </Select>
                                     </FormControl>
                                 </Box>
 
                                 <Button
+
                                     type="submit"
                                     fullWidth
                                     variant="contained"
                                     sx={{ mt: 3, mb: 2 }}
                                 >
-                                    Sign In
+                                    <Link to='/login'>
+                                        Sign In
+                                    </Link>
                                 </Button>
                                 <Grid container>
 

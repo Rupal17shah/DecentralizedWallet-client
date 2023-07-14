@@ -11,7 +11,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import axios from "../services/api";
-
+import axiosInst from "../services/api";
+import { useNavigate } from "react-router-dom";
 const defaultTheme = createTheme({
   palette: {
     primary: {
@@ -25,22 +26,30 @@ const defaultTheme = createTheme({
 
 
 export default function LogInSide() {
-  const [login,setLogin] = React.useState(false);
-  const [role, setRole] = React.useState("");
-  const handleChangeDropDown = (event) => {
-    setRole(event.target.value);
+  const [login, setLogin] = React.useState({});
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const data = new FormData(e.currentTarget);
+    setLogin({ email: data.get('email'), password: data.get('password') });
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // console.log(login);
+    try {
+      const response = await axiosInst.post('/login', login);
+      // console.log(response);
+      if (response) {
+        sessionStorage.setItem("token", response.data.accessToken);
+        navigate("/dashboard");
+        // console.log(response.data.accessToken);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
   };
-  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // console.log({
-    //     email: data.get('email'),
-    //     password: data.get('password'),
-    // });
-    setLogin({email: data.get('email'),password: data.get('password')});
-    console.log(login);
-};
   return (
     <div>
       <ThemeProvider theme={defaultTheme}>
@@ -70,15 +79,15 @@ export default function LogInSide() {
             md={6}
             // component={Paper}
             // elevation={6}
-                      square
-                      m={"auto"}
+            square
+            m={"auto"}
           >
             <Box
               sx={{
                 // my: 10,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",   
+                alignItems: "center",
               }}
             >
               <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
@@ -91,6 +100,7 @@ export default function LogInSide() {
                 component="form"
                 noValidate
                 onSubmit={handleSubmit}
+                onChange={handleChange}
                 sx={{ mt: 1, minWidth: 400 }}
               >
                 <TextField
@@ -131,7 +141,6 @@ export default function LogInSide() {
                                 </Box> */}
 
                 <Button
-                onClick={() => {handleSubmit()}}
                   type="submit"
                   fullWidth
                   variant="contained"

@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import axiosInst from '../services/api'
+
+
 
 const Home = () => {
+    useEffect(() => {
+        const response = axiosInst.get("/abc");
+        console.log(response);
+    })
     return (
         <>
             <section className='body-bg'>
@@ -10,15 +18,18 @@ const Home = () => {
                             <h1 className='hero-text'>B<span className='blue-text'>lock</span>Stream</h1>
                             <p className='hero-text'>stream of INFINITY</p>
                             <p className='hero-text'>earn INFINITY, trade INFINITY</p>
-                            <h2>
-                                <div onClick={() => { alert("dfsdifuh") }} className='button'>Get Started</div></h2>
+                            <Link to='/login'>
+                                <h2>
+                                    <div className='button'>Get Started</div>
+                                </h2>
+                            </Link>
                         </div>
                         <div>
                             <img className='herosvg' src='/Images/herosvg.png' alt='hero' />
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
             <section>
                 <div className='readme-section'></div>
             </section>
