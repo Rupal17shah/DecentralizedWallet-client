@@ -1,21 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const Dashboard = () => {
     return (
         <>
             <section className='body-bg'>
                 <div className='body-bg-screen'>
-                    <div className='overall'>
-                        <div className='dashboard-body'>
-                            <nav className='dash-nav'>
-                                <ul>
-                                    <li>kjnjkbkbk</li>
-                                    <li>kjnjkbkbk</li>
-                                    <li>kjnjkbkbk</li>
-                                    <li>kjnjkbkbk</li>
-                                    <li>kjnjkbkbk</li>
-                                </ul>
-                            </nav>
+                    <div className='container'>
+                        <div className='navbar-dashboard'>
+
+                            <Link className='dash-nav-links'><div>fsjd</div></Link>
+                            <Link className='dash-nav-links'><div>fsjd</div></Link>
+                            <Link className='dash-nav-links'><div>fsjd</div></Link>
+                            <Link className='dash-nav-links'><div>fsjd</div></Link>
+
+
+
+
+
+                        </div>
+                        <div className='dashboard'>
+                            dfsjfndjfndkjfs
                         </div>
                     </div>
                 </div>

@@ -46,7 +46,6 @@ nav {
   width: 600px;
 }
 
-
 h1.hero-text {
   font-size: 4.5rem;
 }
@@ -62,16 +61,12 @@ p.hero-text {
   background-color: #01c38c75;
   padding: 3% 10%;
   border-radius: 5px;
-
 }
-
-
 
 .login-section-content {
   background-color: #69696993;
   margin: auto 10%;
-
-  height: 70vh
+  height: 70vh;
 }
 
 img.hero-img {
@@ -90,19 +85,26 @@ form {
   width: 50%;
 }
 
-.overall {
+.container {
   display: flex;
-  justify-content: space-between;
+}
+
+.navbar-dashboard {
+  height: 100vh;
+  width: 20%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 
-.dashboard-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2% 5%;
+.dash-nav-links {
   width: 100%;
-  position: absolute;
+  text-align: center;
 }
 
-.dash-nav {}
+.dashboard {
+  width: 100%;
+  height: 100%;
+}
