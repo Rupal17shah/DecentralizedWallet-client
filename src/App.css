@@ -3,7 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
-  color: #ffffff;
+  /* color: #ffffff; */
   font-family: 'Caudex', serif;
 }
 
@@ -26,6 +26,7 @@ nav {
 
 .body-bg {
   height: 100vh;
+  color: #ffffff;
   background-image: url(/public/Images/bg.png);
 }
 
@@ -87,24 +88,79 @@ form {
 
 .container {
   display: flex;
+  color: #000;
 }
 
 .navbar-dashboard {
   height: 100vh;
-  width: 20%;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 10%;
+  background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  padding-top: 2%;
+  /* padding-bottom: 2%; */
+  /* justify-content: space-around; */
+  /* text-decoration: none; */
+  color: white;
   align-items: center;
 }
 
 .dash-nav-links {
   width: 100%;
   text-align: center;
+  padding: 2%;
 }
 
 .dashboard {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #eeeeee;
+}
+
+.my-account-heading{
+  margin: 2% 2%;
+  text-align: center;
+  color:blue
+}
+
+.balance{
+  background-color: #ffffff;
+  display: flex;
+  width: 20vw;
+  height: 30vh;
+  margin: 5% 5%;
+  border-radius: 3%;
+}
+.transaction{
+  background-color: #ffffff;
+  display: flex;
+  width: 20vw;
+  height: 30vh;
+  margin: 5% 5%;
+  border-radius: 3%;
+}
+.transactions{
+  background-color: #ffffff;
+  display: flex;
+  width: 30vw;
+  height: 30vh;
+  margin: 5% 5%;
+  border-radius: 3%;
+  text-align: center;
+}
+.balance-heading{
+  margin: auto;
+  text-align: center;
+  color: red;
+  font-size: 5rem;
+}
+
+.num{
+  margin-top: 15%;
+  text-align: center;
+  color:black ;
+}
+
+.cont{
+  display: flex;
 }

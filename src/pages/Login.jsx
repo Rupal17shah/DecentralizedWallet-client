@@ -9,10 +9,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
-import Paper from "@mui/material/Paper";
-import axios from "../services/api";
+import { useContext } from "react";
 import axiosInst from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../context/DataProvider";
 const defaultTheme = createTheme({
   palette: {
     primary: {
@@ -24,22 +24,23 @@ const defaultTheme = createTheme({
 export default function LogInSide({ setIsAuthenticated }) {
   const [login, setLogin] = React.useState({});
   const navigate = useNavigate();
-
+  const { setAccount } = useContext(DataContext);
   const handleChange = (e) => {
     const data = new FormData(e.currentTarget);
-    setLogin({ email: data.get('email'), password: data.get('password') });
-  }
+    setLogin({ email: data.get("email"), password: data.get("password") });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // console.log(login);
     try {
-      const response = await axiosInst.post('/login', login);
-      // console.log(response);
+      const response = await axiosInst.post("/login", login);
+      console.log(response.data.user);
       if (response) {
         sessionStorage.setItem("token", response.data.accessToken);
         setIsAuthenticated(true);
-
+        // console.log(response.data.user);
+        setAccount({ ...response.data.user });
         navigate("/dashboard");
         // console.log(response.data.accessToken);
       }
@@ -69,14 +70,7 @@ export default function LogInSide({ setIsAuthenticated }) {
               backgroundPosition: "center",
             }}
           />
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={6}
-            square
-            m={"auto"}
-          >
+          <Grid item xs={12} sm={8} md={6} square m={"auto"}>
             <Box
               sx={{
                 // my: 10,
